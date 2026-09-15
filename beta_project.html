@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUXORA | Definitive Horology</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,400&family=Montserrat:wght@200;400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f4f4f2;
+            --text: #1a1a1a;
+            --accent: #c5a059;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* CUSTOM SCROLLBAR */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 30px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(244, 244, 242, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            padding: 0 5%;
+        }
+
+        .hero-text h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            line-height: 0.9;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            max-width: 400px;
+            font-weight: 200;
+            margin-bottom: 40px;
+            border-left: 2px solid var(--accent);
+            padding-left: 20px;
+        }
+
+        .hero-image {
+            height: 80vh;
+            background: url('https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&q=80') center/cover;
+            position: relative;
+            box-shadow: 40px 40px 0px var(--white);
+        }
+
+        .btn-main {
+            display: inline-block;
+            padding: 18px 45px;
+            background: var(--text);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: 0.5s;
+        }
+
+        .btn-main:hover {
+            background: var(--accent);
+        }
+
+        /* BRAND STRIP */
+        .brand-strip {
+            background: var(--white);
+            padding: 60px 0;
+            overflow: hidden;
+            border-top: 1px solid #eee;
+        }
+
+        .marquee {
+            display: flex;
+            white-space: nowrap;
+            animation: marquee 20s linear infinite;
+        }
+
+        .marquee span {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin: 0 60px;
+            opacity: 0.3;
+            font-style: italic;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* COLLECTION GRID */
+        .section-title {
+            padding: 100px 5% 40px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            text-align: center;
+        }
+
+        .collection {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 0 5% 100px;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 20px;
+            transition: 0.5s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:nth-child(even) {
+            transform: translateY(40px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: 0.8s;
+        }
+
+        .card:hover img {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+
+        .card-info {
+            margin-top: 20px;
+        }
+
+        .card-info h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+        }
+
+        .card-info span {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* CONTACT AREA */
+        .contact {
+            background: var(--text);
+            color: var(--white);
+            padding: 100px 5%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+        }
+
+        .contact h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #444;
+            padding: 15px 0;
+            color: white;
+            outline: none;
+        }
+
+        button.send-btn {
+            background: var(--accent);
+            border: none;
+            padding: 15px 40px;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 80px 5% 40px;
+            text-align: center;
+        }
+
+        .credits {
+            font-weight: 600;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        .copy {
+            font-size: 0.7rem;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 768px) {
+
+            .hero,
+            .collection,
+            .contact {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image {
+                display: none;
+            }
+
+            .card:nth-child(even) {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="#" class="logo">LUXORA</a>
+        <div class="nav-links">
+            <a href="#collection">Curations</a>
+            <a href="#heritage">Heritage</a>
+            <a href="#contact">Inquiry</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Beyond<br>The Second.</h1>
+            <p>We do not simply measure time; we curate the moments that define your legacy. Explore the 2025
+                Masterpiece Collection.</p>
+            <a href="#collection" class="btn-main">View Selection</a>
+        </div>
+        <div class="hero-image"></div>
+    </section>
+
+    <div class="brand-strip" id="heritage">
+        <div class="marquee">
+            <span>PATEK PHILIPPE</span> <span>AUDEMARS PIGUET</span> <span>ROLEX</span> <span>VACHERON CONSTANTIN</span>
+            <span>CARTIER</span>
+            <span>PATEK PHILIPPE</span> <span>AUDEMARS PIGUET</span> <span>ROLEX</span> <span>VACHERON CONSTANTIN</span>
+            <span>CARTIER</span>
+        </div>
+    </div>
+
+    <h2 class="section-title" id="collection">The Curations</h2>
+
+    <section class="collection">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&q=80" alt="Watch">
+            <div class="card-info">
+                <h3>Monolith Grey</h3>
+                <span>$4,200</span>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&q=80"
+                alt="Watch">
+            <div class="card-info">
+                <h3>Ivory Coast</h3>
+                <span>$3,850</span>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&q=80"
+                alt="Watch">
+            <div class="card-info">
+                <h3>Midnight Chrono</h3>
+                <span>$5,100</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div>
+            <h2>Secure Your<br>Timepiece.</h2>
+            <p>Our consultants are available for private viewings in London, Paris, and Dubai.</p>
+            <p style="margin-top: 20px; color: var(--accent);">concierge@luxora.com</p>
+        </div>
+        <div>
+            <div class="input-group">
+                <input type="text" placeholder="FULL NAME">
+            </div>
+            <div class="input-group">
+                <input type="email" placeholder="EMAIL ADDRESS">
+            </div>
+            <button class="send-btn">Request Consultation</button>
+        </div>
+    </section>
+
+    <footer>
+        <div class="credits">ARYAN & AHAD</div>
+        <div class="copy">&copy; 2025 LUXORA STUDIOS. DEFINING THE ART OF HOROLOGY.</div>
+    </footer>
+
+</body>
+
+</html>
